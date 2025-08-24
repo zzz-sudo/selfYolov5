@@ -1,23 +1,20 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-LabelMe 转 YOLO 格式转换脚本使用示例
+LabelMe 转 YOLO 格式转换脚本使用示例.
 
 本脚本展示了如何使用 labelme2yolo.py 进行数据格式转换
 """
 
-import os
 import subprocess
 import sys
 from pathlib import Path
 
 
 def run_conversion_example():
-    """运行转换示例"""
-    
+    """运行转换示例."""
     print("🚀 LabelMe 转 YOLO 格式转换示例")
     print("=" * 50)
-    
+
     # 示例目录结构
     example_structure = """
     示例目录结构:
@@ -42,18 +39,18 @@ def run_conversion_example():
         ├── images/
         └── labels/
     """
-    
+
     print(example_structure)
-    
+
     # 检查转换脚本是否存在
     script_path = Path("labelme2yolo.py")
     if not script_path.exists():
         print("❌ 错误: 未找到 labelme2yolo.py 脚本")
         print("请确保脚本文件在当前目录中")
         return
-    
+
     print("✅ 找到转换脚本: labelme2yolo.py")
-    
+
     # 显示使用方法
     usage_examples = """
     使用方法示例:
@@ -70,16 +67,17 @@ def run_conversion_example():
     4. 查看帮助信息:
        python labelme2yolo.py --help
     """
-    
+
     print(usage_examples)
-    
+
     # 显示脚本帮助信息
     print("📖 脚本帮助信息:")
     print("-" * 30)
-    
+
     try:
-        result = subprocess.run([sys.executable, "labelme2yolo.py", "--help"], 
-                              capture_output=True, text=True, timeout=10)
+        result = subprocess.run(
+            [sys.executable, "labelme2yolo.py", "--help"], capture_output=True, text=True, timeout=10
+        )
         if result.returncode == 0:
             print(result.stdout)
         else:
@@ -91,8 +89,7 @@ def run_conversion_example():
 
 
 def create_sample_classes_file():
-    """创建示例类别文件"""
-    
+    """创建示例类别文件."""
     classes_content = """person
 car
 dog
@@ -104,20 +101,19 @@ truck
 traffic_light
 stop_sign
 """
-    
+
     classes_file = Path("sample_classes.txt")
     with open(classes_file, "w", encoding="utf-8") as f:
         f.write(classes_content)
-    
+
     print(f"✅ 创建示例类别文件: {classes_file}")
     print("类别列表:")
-    for i, class_name in enumerate(classes_content.strip().split('\n')):
+    for i, class_name in enumerate(classes_content.strip().split("\n")):
         print(f"  {i}: {class_name}")
 
 
 def create_sample_dataset_yaml():
-    """创建示例数据集配置文件"""
-    
+    """创建示例数据集配置文件."""
     yaml_content = """# 数据集配置文件示例
 path: /path/to/your/dataset  # 数据集根目录
 train: train/images          # 训练集图像目录
@@ -135,17 +131,16 @@ names:                       # 类别名称列表
   8: traffic_light
   9: stop_sign
 """
-    
+
     yaml_file = Path("sample_dataset.yaml")
     with open(yaml_file, "w", encoding="utf-8") as f:
         f.write(yaml_content)
-    
+
     print(f"✅ 创建示例数据集配置文件: {yaml_file}")
 
 
 def show_training_commands():
-    """显示训练命令示例"""
-    
+    """显示训练命令示例."""
     training_commands = """
     🚀 YOLOv5 训练命令示例:
     
@@ -168,13 +163,12 @@ def show_training_commands():
     6. 启用混合精度训练:
        python train.py --data dataset.yaml --weights yolov5s.pt --img 640 --epochs 100 --amp
     """
-    
+
     print(training_commands)
 
 
 def show_validation_commands():
-    """显示验证命令示例"""
-    
+    """显示验证命令示例."""
     validation_commands = """
     🔍 模型验证命令示例:
     
@@ -190,38 +184,37 @@ def show_validation_commands():
     4. 测试推理:
        python detect.py --weights runs/train/exp1/weights/best.pt --source test_image.jpg
     """
-    
+
     print(validation_commands)
 
 
 def main():
-    """主函数"""
-    
+    """主函数."""
     print("🎯 LabelMe 数据集创建与 YOLOv5 训练完整指南")
     print("=" * 60)
-    
+
     # 运行转换示例
     run_conversion_example()
-    
+
     print("\n" + "=" * 60)
-    
+
     # 创建示例文件
     print("📁 创建示例文件:")
     create_sample_classes_file()
     create_sample_dataset_yaml()
-    
+
     print("\n" + "=" * 60)
-    
+
     # 显示训练命令
     show_training_commands()
-    
+
     print("\n" + "=" * 60)
-    
+
     # 显示验证命令
     show_validation_commands()
-    
+
     print("\n" + "=" * 60)
-    
+
     # 总结
     summary = """
     📋 完整工作流程总结:
@@ -238,12 +231,12 @@ def main():
     - 定期验证模型性能，及时调整策略
     - 保存最佳模型权重，用于后续部署
     """
-    
+
     print(summary)
-    
+
     print("🎉 示例完成！请根据您的实际需求调整参数和路径。")
     print("如有问题，请参考 README_LabelMe_Training.md 文件。")
 
 
 if __name__ == "__main__":
-    main() 
+    main()

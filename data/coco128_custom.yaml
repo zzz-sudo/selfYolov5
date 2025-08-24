@@ -4,7 +4,7 @@
 # 数据集路径 (相对于YOLOv5根目录)
 path: datasets/coco128
 train: images/train2017
-val: images/train2017  # COCO128只有训练集，用训练集作为验证集
+val: images/train2017 # COCO128只有训练集，用训练集作为验证集
 
 # 类别数量 (COCO数据集有80个类别)
 nc: 80
@@ -90,4 +90,4 @@ names:
   76: scissors
   77: teddy bear
   78: hair drier
-  79: toothbrush 
+  79: toothbrush

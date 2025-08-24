@@ -6,16 +6,16 @@
 
 ## 🚀 快速导航
 
-| 需求 | 查看章节 | 快速链接 |
-|------|----------|----------|
-| 🆕 **新手入门** | [快速开始](#-快速开始) | 环境安装、练习数据集 |
+| 需求            | 查看章节                                               | 快速链接                        |
+| --------------- | ------------------------------------------------------ | ------------------------------- |
+| 🆕 **新手入门** | [快速开始](#-快速开始)                                 | 环境安装、练习数据集            |
 | 🏷️ **数据标注** | [LabelMe 数据标注完整指南](#-labelme-数据标注完整指南) | 安装LabelMe、标注步骤、格式转换 |
-| 🚀 **模型训练** | [YOLOv5 训练流程](#-yolov5-训练流程) | 训练准备、命令详解、过程监控 |
-| 🔍 **模型验证** | [模型验证与测试](#-模型验证与测试) | 验证命令、性能指标、推理测试 |
-| ⚠️ **问题解决** | [常见环境问题解决](#️-常见环境问题解决) | numpy兼容、依赖冲突、wandb问题 |
-| 🔧 **高级功能** | [高级功能](#-高级功能) | 模型导出、超参数优化、部署指南 |
-| 📊 **性能参考** | [性能指标](#-性能指标) | 各模型性能对比表 |
-| 🛠️ **开发指南** | [开发指南](#️-开发指南) | 项目结构、自定义数据集 |
+| 🚀 **模型训练** | [YOLOv5 训练流程](#-yolov5-训练流程)                   | 训练准备、命令详解、过程监控    |
+| 🔍 **模型验证** | [模型验证与测试](#-模型验证与测试)                     | 验证命令、性能指标、推理测试    |
+| ⚠️ **问题解决** | [常见环境问题解决](#️-常见环境问题解决)                | numpy兼容、依赖冲突、wandb问题  |
+| 🔧 **高级功能** | [高级功能](#-高级功能)                                 | 模型导出、超参数优化、部署指南  |
+| 📊 **性能参考** | [性能指标](#-性能指标)                                 | 各模型性能对比表                |
+| 🛠️ **开发指南** | [开发指南](#️-开发指南)                                | 项目结构、自定义数据集          |
 
 ## 📖 项目简介
 
@@ -130,10 +130,11 @@ labelme
 #### 3. 推荐类别
 
 根据COCO数据集，建议使用以下类别：
+
 ```
-person, car, dog, cat, bicycle, motorcycle, bus, truck, 
-traffic_light, stop_sign, chair, table, bottle, cup, 
-fork, knife, spoon, bowl, banana, apple, sandwich, 
+person, car, dog, cat, bicycle, motorcycle, bus, truck,
+traffic_light, stop_sign, chair, table, bottle, cup,
+fork, knife, spoon, bowl, banana, apple, sandwich,
 orange, broccoli, carrot, hot_dog, pizza, donut, cake
 ```
 
@@ -190,8 +191,8 @@ datasets/yolo_practice/
 path: F:/PythonLearning/yolov5/datasets/yolo_practice
 train: train/images
 val: val/images
-nc: 4  # 类别数量
-names: ['cat', 'food', 'person', 'truck']  # 类别名称
+nc: 4 # 类别数量
+names: ["cat", "food", "person", "truck"] # 类别名称
 ```
 
 ## 🚀 YOLOv5 训练流程
@@ -230,13 +231,13 @@ python train.py --data datasets/yolo_practice/dataset.yaml --weights '' --cfg yo
 ```bash
 # 单GPU训练
 python train.py \
-    --data datasets/yolo_practice/dataset.yaml \
-    --weights yolov5s.pt \
-    --img 640 \
-    --epochs 30 \
-    --batch-size 8 \
-    --project custom_training \
-    --name labelme_practice
+  --data datasets/yolo_practice/dataset.yaml \
+  --weights yolov5s.pt \
+  --img 640 \
+  --epochs 30 \
+  --batch-size 8 \
+  --project custom_training \
+  --name labelme_practice
 ```
 
 #### 高级训练选项
@@ -244,22 +245,22 @@ python train.py \
 ```bash
 # 多GPU训练
 python -m torch.distributed.run --nproc_per_node 2 train.py \
-    --data datasets/yolo_practice/dataset.yaml \
-    --weights yolov5s.pt \
-    --img 640 \
-    --epochs 30 \
-    --batch-size 16
+  --data datasets/yolo_practice/dataset.yaml \
+  --weights yolov5s.pt \
+  --img 640 \
+  --epochs 30 \
+  --batch-size 16
 
 # 自定义超参数
 python train.py \
-    --data datasets/yolo_practice/dataset.yaml \
-    --weights yolov5s.pt \
-    --img 640 \
-    --epochs 30 \
-    --batch-size 8 \
-    --lr0 0.001 \
-    --momentum 0.937 \
-    --weight_decay 0.0005
+  --data datasets/yolo_practice/dataset.yaml \
+  --weights yolov5s.pt \
+  --img 640 \
+  --epochs 30 \
+  --batch-size 8 \
+  --lr0 0.001 \
+  --momentum 0.937 \
+  --weight_decay 0.0005
 ```
 
 ### 训练过程监控
@@ -267,6 +268,7 @@ python train.py \
 #### 1. 实时监控
 
 训练过程中会显示：
+
 - 损失曲线 (box_loss, obj_loss, cls_loss)
 - GPU内存使用情况
 - 训练进度和速度
@@ -285,6 +287,7 @@ tensorboard --logdir runs/train
 #### 3. 训练结果
 
 训练完成后，结果保存在：
+
 ```
 runs/train/custom_training/labelme_practice/
 ├── weights/
@@ -305,20 +308,21 @@ runs/train/custom_training/labelme_practice/
 ```bash
 # 验证最佳模型
 python val.py \
-    --weights runs/train/custom_training/labelme_practice/weights/best.pt \
-    --data datasets/yolo_practice/dataset.yaml \
-    --img 640
+  --weights runs/train/custom_training/labelme_practice/weights/best.pt \
+  --data datasets/yolo_practice/dataset.yaml \
+  --img 640
 
 # 验证最后一轮模型
 python val.py \
-    --weights runs/train/custom_training/labelme_practice/weights/last.pt \
-    --data datasets/yolo_practice/dataset.yaml \
-    --img 640
+  --weights runs/train/custom_training/labelme_practice/weights/last.pt \
+  --data datasets/yolo_practice/dataset.yaml \
+  --img 640
 ```
 
 #### 2. 验证指标
 
 验证完成后会显示：
+
 - **mAP@0.5**: 交并比阈值为0.5时的平均精度
 - **mAP@0.5:0.95**: 交并比阈值从0.5到0.95的平均精度
 - **Precision**: 精确率
@@ -332,10 +336,10 @@ python val.py \
 ```bash
 # 使用训练好的模型进行推理
 python detect.py \
-    --weights runs/train/custom_training/labelme_practice/weights/best.pt \
-    --source datasets/labelme_practice/000000000009.jpg \
-    --project custom_inference \
-    --name labelme_practice
+  --weights runs/train/custom_training/labelme_practice/weights/best.pt \
+  --source datasets/labelme_practice/000000000009.jpg \
+  --project custom_inference \
+  --name labelme_practice
 ```
 
 #### 2. 批量推理
@@ -343,15 +347,16 @@ python detect.py \
 ```bash
 # 推理整个目录
 python detect.py \
-    --weights runs/train/custom_training/labelme_practice/weights/best.pt \
-    --source datasets/labelme_practice/ \
-    --project custom_inference \
-    --name labelme_practice
+  --weights runs/train/custom_training/labelme_practice/weights/best.pt \
+  --source datasets/labelme_practice/ \
+  --project custom_inference \
+  --name labelme_practice
 ```
 
 #### 3. 推理结果
 
 推理完成后，结果保存在：
+
 ```
 runs/detect/custom_inference/labelme_practice/
 ├── 000000000009.jpg     # 带检测框的图像
@@ -383,7 +388,7 @@ pip install pandas
 ```bash
 # 创建虚拟环境
 python -m venv yolov5_env
-yolov5_env\Scripts\activate  # Windows
+yolov5_env\Scripts\activate # Windows
 # source yolov5_env/bin/activate  # Linux/Mac
 
 # 在虚拟环境中安装
@@ -457,33 +462,33 @@ python val.py --weights yolov5s.pt yolov5m.pt yolov5l.pt --data coco.yaml
 
 ### 目标检测性能 (COCO 数据集)
 
-| 模型 | 输入尺寸 | mAP@0.5:0.95 | mAP@0.5 | 参数量(M) | FLOPs(B) |
-|------|----------|---------------|---------|------------|-----------|
-| YOLOv5n | 640 | 28.0 | 45.7 | 1.9 | 4.5 |
-| YOLOv5s | 640 | 37.4 | 56.8 | 7.2 | 16.5 |
-| YOLOv5m | 640 | 45.4 | 64.1 | 21.2 | 49.0 |
-| YOLOv5l | 640 | 49.0 | 67.3 | 46.5 | 109.1 |
-| YOLOv5x | 640 | 50.7 | 68.9 | 86.7 | 205.7 |
+| 模型    | 输入尺寸 | mAP@0.5:0.95 | mAP@0.5 | 参数量(M) | FLOPs(B) |
+| ------- | -------- | ------------ | ------- | --------- | -------- |
+| YOLOv5n | 640      | 28.0         | 45.7    | 1.9       | 4.5      |
+| YOLOv5s | 640      | 37.4         | 56.8    | 7.2       | 16.5     |
+| YOLOv5m | 640      | 45.4         | 64.1    | 21.2      | 49.0     |
+| YOLOv5l | 640      | 49.0         | 67.3    | 46.5      | 109.1    |
+| YOLOv5x | 640      | 50.7         | 68.9    | 86.7      | 205.7    |
 
 ### 实例分割性能
 
-| 模型 | 输入尺寸 | mAP@0.5:0.95 (box) | mAP@0.5:0.95 (mask) | 参数量(M) |
-|------|----------|---------------------|---------------------|------------|
-| YOLOv5n-seg | 640 | 27.6 | 23.4 | 2.0 |
-| YOLOv5s-seg | 640 | 37.6 | 31.7 | 7.6 |
-| YOLOv5m-seg | 640 | 45.0 | 37.1 | 22.0 |
-| YOLOv5l-seg | 640 | 49.0 | 39.9 | 47.9 |
-| YOLOv5x-seg | 640 | 50.7 | 41.4 | 88.8 |
+| 模型        | 输入尺寸 | mAP@0.5:0.95 (box) | mAP@0.5:0.95 (mask) | 参数量(M) |
+| ----------- | -------- | ------------------ | ------------------- | --------- |
+| YOLOv5n-seg | 640      | 27.6               | 23.4                | 2.0       |
+| YOLOv5s-seg | 640      | 37.6               | 31.7                | 7.6       |
+| YOLOv5m-seg | 640      | 45.0               | 37.1                | 22.0      |
+| YOLOv5l-seg | 640      | 49.0               | 39.9                | 47.9      |
+| YOLOv5x-seg | 640      | 50.7               | 41.4                | 88.8      |
 
 ### 图像分类性能 (ImageNet)
 
-| 模型 | 输入尺寸 | Top-1 Acc | Top-5 Acc | 参数量(M) |
-|------|----------|------------|------------|------------|
-| YOLOv5n-cls | 224 | 64.6 | 85.4 | 2.5 |
-| YOLOv5s-cls | 224 | 71.5 | 90.2 | 5.4 |
-| YOLOv5m-cls | 224 | 75.9 | 92.9 | 12.9 |
-| YOLOv5l-cls | 224 | 78.0 | 94.0 | 26.5 |
-| YOLOv5x-cls | 224 | 79.0 | 94.4 | 48.1 |
+| 模型        | 输入尺寸 | Top-1 Acc | Top-5 Acc | 参数量(M) |
+| ----------- | -------- | --------- | --------- | --------- |
+| YOLOv5n-cls | 224      | 64.6      | 85.4      | 2.5       |
+| YOLOv5s-cls | 224      | 71.5      | 90.2      | 5.4       |
+| YOLOv5m-cls | 224      | 75.9      | 92.9      | 12.9      |
+| YOLOv5l-cls | 224      | 78.0      | 94.0      | 26.5      |
+| YOLOv5x-cls | 224      | 79.0      | 94.4      | 48.1      |
 
 ## 🛠️ 开发指南
 
@@ -534,6 +539,7 @@ dataset/
 ```
 
 标签格式 (YOLO):
+
 ```
 class_id x_center y_center width height
 ```
@@ -551,6 +557,7 @@ dataset/
 ```
 
 标签格式:
+
 ```
 class_id x1 y1 x2 y2 ... xn yn
 ```
@@ -605,10 +612,10 @@ copy_paste: 0.0
 import torch
 
 # 加载模型
-model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
+model = torch.hub.load("ultralytics/yolov5", "yolov5s", pretrained=True)
 
 # 推理
-img = 'path/to/image.jpg'
+img = "path/to/image.jpg"
 results = model(img)
 
 # 处理结果
@@ -622,7 +629,7 @@ results.show()
 import onnxruntime as ort
 
 # 加载 ONNX 模型
-session = ort.InferenceSession('yolov5s.onnx')
+session = ort.InferenceSession("yolov5s.onnx")
 
 # 预处理输入
 input_name = session.get_inputs()[0].name
@@ -636,10 +643,9 @@ outputs = session.run(output_names, {input_name: input_data})
 
 ```python
 import tensorrt as trt
-import pycuda.driver as cuda
 
 # 加载 TensorRT 引擎
-with open('yolov5s.engine', 'rb') as f:
+with open("yolov5s.engine", "rb") as f:
     engine_data = f.read()
 runtime = trt.Runtime(trt.Logger(trt.Logger.WARNING))
 engine = runtime.deserialize_cuda_engine(engine_data)
@@ -653,6 +659,7 @@ context = engine.create_execution_context()
 ### 常见问题
 
 1. **CUDA 内存不足**
+
 ```bash
 # 减少批次大小
 python train.py --batch-size 16
@@ -662,12 +669,14 @@ python train.py --amp
 ```
 
 2. **数据集加载错误**
+
 ```bash
 # 检查数据集路径
 python train.py --data custom.yaml --img 640 --epochs 1
 ```
 
 3. **模型导出失败**
+
 ```bash
 # 检查依赖安装
 pip install onnx onnxsim

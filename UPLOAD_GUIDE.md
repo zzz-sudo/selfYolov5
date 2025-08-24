@@ -3,23 +3,26 @@
 ## 📋 上传前准备
 
 ### 1. 已排除的大文件
-- ✅ 预训练权重文件 (*.pt, *.pth, *.weights)
+
+- ✅ 预训练权重文件 (_.pt, _.pth, \*.weights)
 - ✅ 数据集文件 (datasets/ 目录)
 - ✅ 训练结果 (runs/ 目录)
-- ✅ 缓存文件 (*.cache, *.cache.npy)
-- ✅ Python缓存文件 (__pycache__/)
+- ✅ 缓存文件 (_.cache, _.cache.npy)
+- ✅ Python缓存文件 (**pycache**/)
 
 ### 2. 保留的重要文件
+
 - ✅ 核心代码文件 (train.py, detect.py, segment/, classify/)
 - ✅ 模型定义 (models/)
 - ✅ 工具函数 (utils/)
-- ✅ 配置文件 (data/*.yaml)
+- ✅ 配置文件 (data/\*.yaml)
 - ✅ 自定义脚本 (labelme2yolo.py, labelme2yolo_seg.py, instance_segmentation_learning.py)
 - ✅ 文档文件 (README.md, LICENSE, CITATION.cff)
 
 ## 🔧 上传步骤
 
 ### 步骤1: 初始化Git仓库
+
 ```bash
 git init
 git add .
@@ -27,11 +30,13 @@ git commit -m "Initial commit: YOLOv5 project with custom scripts"
 ```
 
 ### 步骤2: 添加远程仓库
+
 ```bash
 git remote add origin https://github.com/zzz-sudo/selfYolov5.git
 ```
 
 ### 步骤3: 推送到GitHub
+
 ```bash
 git branch -M main
 git push -u origin main
@@ -78,4 +83,4 @@ selfYolov5/
 
 ## 📞 联系方式
 
-如有问题，请通过GitHub Issues联系。 
+如有问题，请通过GitHub Issues联系。
