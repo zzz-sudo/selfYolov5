@@ -1,8 +1,20 @@
-# YOLOv5 目标检测、实例分割和图像分类项目
+# SelfYOLOv5 - 基于官方YOLOv5的自定义项目
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/ultralytics/assets/main/yolov8/banner-yolov8.png" alt="YOLOv5 Banner" width="100%">
+  <h3>🚀 基于 Ultralytics YOLOv5 的自定义增强版本</h3>
+  <p>本项目基于官方 YOLOv5 代码进行修改和增强，添加了自定义脚本和功能</p>
 </div>
+
+## 📋 项目说明
+
+**SelfYOLOv5** 是基于 [Ultralytics YOLOv5](https://github.com/ultralytics/yolov5) 官方代码修改的项目，在保持官方核心功能的基础上，增加了以下自定义功能：
+
+- 🎯 **完整的目标检测流程**: 从数据标注到模型训练
+- ✂️ **实例分割支持**: 包含多边形标注和分割训练
+- 🏷️ **图像分类功能**: 支持多类别分类任务
+- 🛠️ **自定义脚本**: LabelMe数据转换和统一训练流程
+- 📚 **详细文档**: 中文说明和操作指南
+- 🔧 **环境问题解决**: 常见问题的解决方案
 
 ## 🚀 快速导航
 
@@ -14,16 +26,7 @@
 | 🔍 **模型验证** | [模型验证与测试](#-模型验证与测试) | 验证命令、性能指标、推理测试 |
 | ⚠️ **问题解决** | [常见环境问题解决](#️-常见环境问题解决) | numpy兼容、依赖冲突、wandb问题 |
 | 🔧 **高级功能** | [高级功能](#-高级功能) | 模型导出、超参数优化、部署指南 |
-| 📊 **性能参考** | [性能指标](#-性能指标) | 各模型性能对比表 |
 | 🛠️ **开发指南** | [开发指南](#️-开发指南) | 项目结构、自定义数据集 |
-
-## 📖 项目简介
-
-YOLOv5 是由 Ultralytics 开发的最先进的计算机视觉模型，基于 PyTorch 框架构建。该项目支持三种主要的计算机视觉任务：
-
-- 🎯 **目标检测 (Object Detection)**: 检测图像中的物体位置和类别
-- ✂️ **实例分割 (Instance Segmentation)**: 为每个检测到的物体生成像素级掩码
-- 🏷️ **图像分类 (Image Classification)**: 对图像进行类别分类
 
 ## ✨ 主要特性
 
@@ -453,37 +456,18 @@ python val.py --weights yolov5s.pt --data coco.yaml --augment
 python val.py --weights yolov5s.pt yolov5m.pt yolov5l.pt --data coco.yaml
 ```
 
-## 📊 性能指标
+## 📊 项目特色
 
-### 目标检测性能 (COCO 数据集)
+### 🎯 核心功能
+- **目标检测**: 支持多种预训练模型，可自定义训练
+- **实例分割**: 多边形标注支持，精确分割训练
+- **图像分类**: 多类别分类，支持迁移学习
 
-| 模型 | 输入尺寸 | mAP@0.5:0.95 | mAP@0.5 | 参数量(M) | FLOPs(B) |
-|------|----------|---------------|---------|------------|-----------|
-| YOLOv5n | 640 | 28.0 | 45.7 | 1.9 | 4.5 |
-| YOLOv5s | 640 | 37.4 | 56.8 | 7.2 | 16.5 |
-| YOLOv5m | 640 | 45.4 | 64.1 | 21.2 | 49.0 |
-| YOLOv5l | 640 | 49.0 | 67.3 | 46.5 | 109.1 |
-| YOLOv5x | 640 | 50.7 | 68.9 | 86.7 | 205.7 |
-
-### 实例分割性能
-
-| 模型 | 输入尺寸 | mAP@0.5:0.95 (box) | mAP@0.5:0.95 (mask) | 参数量(M) |
-|------|----------|---------------------|---------------------|------------|
-| YOLOv5n-seg | 640 | 27.6 | 23.4 | 2.0 |
-| YOLOv5s-seg | 640 | 37.6 | 31.7 | 7.6 |
-| YOLOv5m-seg | 640 | 45.0 | 37.1 | 22.0 |
-| YOLOv5l-seg | 640 | 49.0 | 39.9 | 47.9 |
-| YOLOv5x-seg | 640 | 50.7 | 41.4 | 88.8 |
-
-### 图像分类性能 (ImageNet)
-
-| 模型 | 输入尺寸 | Top-1 Acc | Top-5 Acc | 参数量(M) |
-|------|----------|------------|------------|------------|
-| YOLOv5n-cls | 224 | 64.6 | 85.4 | 2.5 |
-| YOLOv5s-cls | 224 | 71.5 | 90.2 | 5.4 |
-| YOLOv5m-cls | 224 | 75.9 | 92.9 | 12.9 |
-| YOLOv5l-cls | 224 | 78.0 | 94.0 | 26.5 |
-| YOLOv5x-cls | 224 | 79.0 | 94.4 | 48.1 |
+### 🛠️ 自定义增强
+- **LabelMe集成**: 完整的标注工作流程
+- **数据转换**: 自动格式转换和数据集分割
+- **统一训练**: 简化的训练和验证流程
+- **问题解决**: 常见环境问题的解决方案
 
 ## 🛠️ 开发指南
 
@@ -705,16 +689,26 @@ pip install onnx onnxsim
 
 ## 📄 许可证
 
-本项目采用 AGPL-3.0 许可证。详情请查看 [LICENSE](LICENSE) 文件。
+本项目基于 [Ultralytics YOLOv5](https://github.com/ultralytics/yolov5) 官方代码修改，采用 **AGPL-3.0 许可证**。
+
+### 官方许可证信息
+- **原始项目**: [Ultralytics YOLOv5](https://github.com/ultralytics/yolov5)
+- **许可证**: AGPL-3.0
+- **版权**: © 2020-2024 Ultralytics
+- **许可证文件**: [LICENSE](LICENSE)
+
+### 修改说明
+本项目在保持官方许可证的基础上，添加了自定义功能和脚本。所有修改都遵循 AGPL-3.0 许可证要求。
 
 ## 📞 联系方式
 
-- GitHub Issues: [项目问题反馈](https://github.com/ultralytics/yolov5/issues)
-- 官方文档: [https://docs.ultralytics.com/](https://docs.ultralytics.com/)
-- 社区讨论: [Discord](https://discord.com/invite/ultralytics)
+- **本项目**: [SelfYOLOv5 GitHub](https://github.com/zzz-sudo/selfYolov5)
+- **原始项目**: [Ultralytics YOLOv5](https://github.com/ultralytics/yolov5)
+- **官方文档**: [https://docs.ultralytics.com/](https://docs.ultralytics.com/)
 
 ---
 
 <div align="center">
+  <p>基于官方 YOLOv5 的自定义增强版本，感谢 Ultralytics 团队的开源贡献！</p>
   <p>如果这个项目对您有帮助，请给个 ⭐️ 支持一下！</p>
 </div>
