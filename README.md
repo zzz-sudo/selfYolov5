@@ -1,34 +1,34 @@
 # SelfYOLOv5 - 基于官方YOLOv5的自定义项目
 
 <div align="center">
-  <h3>🚀 基于 Ultralytics YOLOv5 的自定义增强版本</h3>
+  <h3> 基于 Ultralytics YOLOv5 的自定义增强版本</h3>
   <p>本项目基于官方 YOLOv5 代码进行修改和增强，添加了自定义脚本和功能</p>
 </div>
 
-## 📋 项目说明
+##  项目说明
 
 **SelfYOLOv5** 是基于 [Ultralytics YOLOv5](https://github.com/ultralytics/yolov5) 官方代码修改的项目，在保持官方核心功能的基础上，增加了以下自定义功能：
 
-- 🎯 **完整的目标检测流程**: 从数据标注到模型训练
-- ✂️ **实例分割支持**: 包含多边形标注和分割训练
-- 🏷️ **图像分类功能**: 支持多类别分类任务
-- 🛠️ **自定义脚本**: LabelMe数据转换和统一训练流程
-- 📚 **详细文档**: 中文说明和操作指南
-- 🔧 **环境问题解决**: 常见问题的解决方案
+-  **完整的目标检测流程**: 从数据标注到模型训练
+-  **实例分割支持**: 包含多边形标注和分割训练
+-  **图像分类功能**: 支持多类别分类任务
+-  **自定义脚本**: LabelMe数据转换和统一训练流程
+-  **详细文档**: 中文说明和操作指南
+-  **环境问题解决**: 常见问题的解决方案
 
-## 🚀 快速导航
+##  快速导航
 
 | 需求 | 查看章节 | 快速链接 |
 |------|----------|----------|
-| 🆕 **新手入门** | [快速开始](#-快速开始) | 环境安装、练习数据集 |
-| 🏷️ **数据标注** | [LabelMe 数据标注完整指南](#-labelme-数据标注完整指南) | 安装LabelMe、标注步骤、格式转换 |
-| 🚀 **模型训练** | [YOLOv5 训练流程](#-yolov5-训练流程) | 训练准备、命令详解、过程监控 |
-| 🔍 **模型验证** | [模型验证与测试](#-模型验证与测试) | 验证命令、性能指标、推理测试 |
-| ⚠️ **问题解决** | [常见环境问题解决](#️-常见环境问题解决) | numpy兼容、依赖冲突、wandb问题 |
-| 🔧 **高级功能** | [高级功能](#-高级功能) | 模型导出、超参数优化、部署指南 |
-| 🛠️ **开发指南** | [开发指南](#️-开发指南) | 项目结构、自定义数据集 |
+|  **新手入门** | [快速开始](#-快速开始) | 环境安装、练习数据集 |
+|  **数据标注** | [LabelMe 数据标注完整指南](#-labelme-数据标注完整指南) | 安装LabelMe、标注步骤、格式转换 |
+|  **模型训练** | [YOLOv5 训练流程](#-yolov5-训练流程) | 训练准备、命令详解、过程监控 |
+|  **模型验证** | [模型验证与测试](#-模型验证与测试) | 验证命令、性能指标、推理测试 |
+|  **问题解决** | [常见环境问题解决](#️-常见环境问题解决) | numpy兼容、依赖冲突、wandb问题 |
+|  **高级功能** | [高级功能](#-高级功能) | 模型导出、超参数优化、部署指南 |
+|  **开发指南** | [开发指南](#️-开发指南) | 项目结构、自定义数据集 |
 
-## ✨ 主要特性
+##  主要特性
 
 - **高性能**: 在 COCO 数据集上达到最先进的性能
 - **易用性**: 简单的命令行接口和 Python API
@@ -37,7 +37,7 @@
 - **实时推理**: 优化的推理速度，适合实时应用
 - **自动下载**: 预训练模型和数据集自动下载
 
-## 🚀 快速开始
+##  快速开始
 
 ### 环境要求
 
@@ -45,7 +45,7 @@
 - PyTorch >= 1.8.0
 - CUDA >= 10.2 (GPU 训练推荐)
 
-### 🎯 练习数据集
+###  练习数据集
 
 我们为您准备了完整的练习数据集，包含：
 
@@ -84,7 +84,7 @@ pip install -r requirements.txt
 pip install labelme
 ```
 
-## 🏷️ LabelMe 数据标注完整指南
+##  LabelMe 数据标注完整指南
 
 ### 什么是LabelMe？
 
@@ -197,7 +197,7 @@ nc: 4  # 类别数量
 names: ['cat', 'food', 'person', 'truck']  # 类别名称
 ```
 
-## 🚀 YOLOv5 训练流程
+##  YOLOv5 训练流程
 
 ### 训练前准备
 
@@ -299,7 +299,7 @@ runs/train/custom_training/labelme_practice/
 └── train_batch0.jpg     # 训练批次示例
 ```
 
-## 🔍 模型验证与测试
+##  模型验证与测试
 
 ### 模型验证
 
@@ -362,7 +362,7 @@ runs/detect/custom_inference/labelme_practice/
 └── ...
 ```
 
-## ⚠️ 常见环境问题解决
+##  常见环境问题解决
 
 ### 问题1: numpy 版本不兼容
 
@@ -456,20 +456,20 @@ python val.py --weights yolov5s.pt --data coco.yaml --augment
 python val.py --weights yolov5s.pt yolov5m.pt yolov5l.pt --data coco.yaml
 ```
 
-## 📊 项目特色
+##  项目特色
 
-### 🎯 核心功能
+###  核心功能
 - **目标检测**: 支持多种预训练模型，可自定义训练
 - **实例分割**: 多边形标注支持，精确分割训练
 - **图像分类**: 多类别分类，支持迁移学习
 
-### 🛠️ 自定义增强
+###  自定义增强
 - **LabelMe集成**: 完整的标注工作流程
 - **数据转换**: 自动格式转换和数据集分割
 - **统一训练**: 简化的训练和验证流程
 - **问题解决**: 常见环境问题的解决方案
 
-## 🛠️ 开发指南
+##  开发指南
 
 ### 项目结构
 
@@ -581,7 +581,7 @@ mixup: 0.0
 copy_paste: 0.0
 ```
 
-## 🚀 部署指南
+##  部署指南
 
 ### 1. PyTorch 部署
 
@@ -632,7 +632,7 @@ engine = runtime.deserialize_cuda_engine(engine_data)
 context = engine.create_execution_context()
 ```
 
-## 🔍 故障排除
+##  故障排除
 
 ### 常见问题
 
@@ -669,7 +669,7 @@ pip install onnx onnxsim
    - 启用半精度推理
    - 批处理推理
 
-## 📚 参考资料
+##  参考资料
 
 - [YOLOv5 官方文档](https://docs.ultralytics.com/yolov5/)
 - [PyTorch 官方教程](https://pytorch.org/tutorials/)
@@ -677,7 +677,7 @@ pip install onnx onnxsim
 - [ImageNet 数据集](https://image-net.org/)
 - [LabelMe 官方文档](https://github.com/wkentaro/labelme)
 
-## 🤝 贡献指南
+##  贡献指南
 
 欢迎提交 Issue 和 Pull Request！
 
@@ -687,7 +687,7 @@ pip install onnx onnxsim
 4. 推送到分支
 5. 创建 Pull Request
 
-## 📄 许可证
+##  许可证
 
 本项目基于 [Ultralytics YOLOv5](https://github.com/ultralytics/yolov5) 官方代码修改，采用 **AGPL-3.0 许可证**。
 
@@ -700,7 +700,7 @@ pip install onnx onnxsim
 ### 修改说明
 本项目在保持官方许可证的基础上，添加了自定义功能和脚本。所有修改都遵循 AGPL-3.0 许可证要求。
 
-## 📞 联系方式
+##  联系方式
 
 - **本项目**: [SelfYOLOv5 GitHub](https://github.com/zzz-sudo/selfYolov5)
 - **原始项目**: [Ultralytics YOLOv5](https://github.com/ultralytics/yolov5)
