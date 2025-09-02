@@ -15,7 +15,7 @@ from pathlib import Path
 def run_conversion_example():
     """运行转换示例"""
     
-    print("🚀 LabelMe 转 YOLO 格式转换示例")
+    print(" LabelMe 转 YOLO 格式转换示例")
     print("=" * 50)
     
     # 示例目录结构
@@ -48,11 +48,11 @@ def run_conversion_example():
     # 检查转换脚本是否存在
     script_path = Path("labelme2yolo.py")
     if not script_path.exists():
-        print("❌ 错误: 未找到 labelme2yolo.py 脚本")
+        print(" 错误: 未找到 labelme2yolo.py 脚本")
         print("请确保脚本文件在当前目录中")
         return
     
-    print("✅ 找到转换脚本: labelme2yolo.py")
+    print("找到转换脚本: labelme2yolo.py")
     
     # 显示使用方法
     usage_examples = """
@@ -74,7 +74,7 @@ def run_conversion_example():
     print(usage_examples)
     
     # 显示脚本帮助信息
-    print("📖 脚本帮助信息:")
+    print(" 脚本帮助信息:")
     print("-" * 30)
     
     try:
@@ -109,7 +109,7 @@ stop_sign
     with open(classes_file, "w", encoding="utf-8") as f:
         f.write(classes_content)
     
-    print(f"✅ 创建示例类别文件: {classes_file}")
+    print(f" 创建示例类别文件: {classes_file}")
     print("类别列表:")
     for i, class_name in enumerate(classes_content.strip().split('\n')):
         print(f"  {i}: {class_name}")
@@ -140,14 +140,14 @@ names:                       # 类别名称列表
     with open(yaml_file, "w", encoding="utf-8") as f:
         f.write(yaml_content)
     
-    print(f"✅ 创建示例数据集配置文件: {yaml_file}")
+    print(f" 创建示例数据集配置文件: {yaml_file}")
 
 
 def show_training_commands():
     """显示训练命令示例"""
     
     training_commands = """
-    🚀 YOLOv5 训练命令示例:
+     YOLOv5 训练命令示例:
     
     1. 使用预训练权重训练:
        python train.py --data dataset.yaml --weights yolov5s.pt --img 640 --epochs 100
@@ -176,7 +176,7 @@ def show_validation_commands():
     """显示验证命令示例"""
     
     validation_commands = """
-    🔍 模型验证命令示例:
+     模型验证命令示例:
     
     1. 验证最佳模型:
        python val.py --weights runs/train/exp1/weights/best.pt --data dataset.yaml --img 640
@@ -197,7 +197,7 @@ def show_validation_commands():
 def main():
     """主函数"""
     
-    print("🎯 LabelMe 数据集创建与 YOLOv5 训练完整指南")
+    print(" LabelMe 数据集创建与 YOLOv5 训练完整指南")
     print("=" * 60)
     
     # 运行转换示例
@@ -206,7 +206,7 @@ def main():
     print("\n" + "=" * 60)
     
     # 创建示例文件
-    print("📁 创建示例文件:")
+    print(" 创建示例文件:")
     create_sample_classes_file()
     create_sample_dataset_yaml()
     
@@ -224,15 +224,15 @@ def main():
     
     # 总结
     summary = """
-    📋 完整工作流程总结:
+     完整工作流程总结:
     
-    1. 🏷️  使用 LabelMe 标注图像数据
-    2. 🔄  使用 labelme2yolo.py 转换数据格式
-    3. 🚀  使用 YOLOv5 训练自定义模型
-    4. 🔍  验证模型性能
-    5. 🎯  部署和推理
+    1.  使用 LabelMe 标注图像数据
+    2.  使用 labelme2yolo.py 转换数据格式
+    3.  使用 YOLOv5 训练自定义模型
+    4.  验证模型性能
+    5.  部署和推理
     
-    💡 提示:
+     提示:
     - 确保标注质量，这是训练成功的关键
     - 合理设置训练参数，避免过拟合
     - 定期验证模型性能，及时调整策略
@@ -241,7 +241,7 @@ def main():
     
     print(summary)
     
-    print("🎉 示例完成！请根据您的实际需求调整参数和路径。")
+    print(" 示例完成！请根据您的实际需求调整参数和路径。")
     print("如有问题，请参考 README_LabelMe_Training.md 文件。")
 
 
