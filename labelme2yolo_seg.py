@@ -6,7 +6,7 @@ LabelMe JSON 转 YOLO 实例分割格式转换脚本
 将LabelMe的多边形标注转换为YOLO实例分割所需的标签格式
 实例分割标签包含：class_id x_center y_center width height polygon_points...
 
-作者：AI助手
+作者：五更琉璃
 """
 
 import json
@@ -123,7 +123,7 @@ class LabelMe2YOLOSeg:
             img_height = data.get('imageHeight', 0)
             
             if img_width == 0 or img_height == 0:
-                print(f"⚠️  警告: {json_file.name} 缺少图像尺寸信息")
+                print(f"  警告: {json_file.name} 缺少图像尺寸信息")
                 return ""
             
             yolo_lines = []
@@ -158,19 +158,19 @@ class LabelMe2YOLOSeg:
             return "\n".join(yolo_lines)
             
         except Exception as e:
-            print(f"❌ 转换失败 {json_file}: {e}")
+            print(f" 转换失败 {json_file}: {e}")
             return ""
     
     def convert(self):
         """执行转换"""
-        print(f"🔄 开始转换 LabelMe -> YOLO 实例分割格式")
+        print(f" 开始转换 LabelMe -> YOLO 实例分割格式")
         print(f"输入目录: {self.input_dir}")
         print(f"输出目录: {self.output_dir}")
         
         # 查找所有JSON文件
         json_files = list(self.input_dir.glob("*.json"))
         if not json_files:
-            print("❌ 未找到JSON标注文件")
+            print(" 未找到JSON标注文件")
             return False
         
         print(f"找到 {len(json_files)} 个JSON文件")
@@ -191,19 +191,19 @@ class LabelMe2YOLOSeg:
         print(f"数据集分割: {len(train_files)} 训练, {len(val_files)} 验证")
         
         # 转换训练集
-        print("\n📝 转换训练集...")
+        print("\n 转换训练集...")
         for json_file in train_files:
             self.convert_single_file(json_file, train_dir)
         
         # 转换验证集
-        print("\n📝 转换验证集...")
+        print("\n 转换验证集...")
         for json_file in val_files:
             self.convert_single_file(json_file, val_dir)
         
         # 创建dataset.yaml文件
         self.create_dataset_yaml()
         
-        print(f"\n✅ 转换完成!")
+        print(f"\n 转换完成!")
         print(f"输出目录: {self.output_dir}")
         print(f"训练集: {train_dir} ({len(train_files)} 个文件)")
         print(f"验证集: {val_dir} ({len(val_files)} 个文件)")
@@ -215,7 +215,7 @@ class LabelMe2YOLOSeg:
         # 转换标签
         yolo_content = self.convert_json_to_yolo_seg(json_file)
         if not yolo_content:
-            print(f"⚠️  跳过 {json_file.name} (转换失败)")
+            print(f"  跳过 {json_file.name} (转换失败)")
             return
         
         # 生成输出文件名
@@ -233,10 +233,10 @@ class LabelMe2YOLOSeg:
             if img_file.exists():
                 import shutil
                 shutil.copy2(img_file, output_dir / img_file.name)
-                print(f"✅ {json_file.name} -> {txt_file.name} + {img_file.name}")
+                print(f" {json_file.name} -> {txt_file.name} + {img_file.name}")
                 break
         else:
-            print(f"⚠️  未找到对应的图像文件: {json_file.name}")
+            print(f"  未找到对应的图像文件: {json_file.name}")
     
     def create_dataset_yaml(self):
         """创建dataset.yaml配置文件"""
@@ -261,7 +261,7 @@ names:
         with open(yaml_file, 'w', encoding='utf-8') as f:
             f.write(yaml_content)
         
-        print(f"✅ 创建配置文件: {yaml_file}")
+        print(f" 创建配置文件: {yaml_file}")
 
 
 def main():
@@ -275,7 +275,7 @@ def main():
     
     # 检查输入目录
     if not Path(args.input_dir).exists():
-        print(f"❌ 输入目录不存在: {args.input_dir}")
+        print(f" 输入目录不存在: {args.input_dir}")
         return
     
     # 执行转换
@@ -283,13 +283,13 @@ def main():
     success = converter.convert()
     
     if success:
-        print("\n🎉 转换成功完成!")
-        print("\n💡 下一步:")
+        print("\n 转换成功完成!")
+        print("\n 下一步:")
         print("1. 检查生成的标签文件")
         print("2. 使用 segment/train.py 训练实例分割模型")
         print("3. 确保使用 yolov5s-seg.pt 等实例分割预训练权重")
     else:
-        print("\n❌ 转换失败")
+        print("\n 转换失败")
 
 
 if __name__ == "__main__":
